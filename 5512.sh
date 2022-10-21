@@ -4,7 +4,7 @@ AGE=`grep PASS_MAX_DAYS /etc/login.defs | grep -v "#" | awk -F " " '{print $2}'`
 
 echo -ne "Control: 5.5.1.2 Ensure password expiration is 365 days or less: "
 
-if [[ $AGE -lt 36 ]]
+if [[ $AGE -lt 366 ]]
 then
 	echo  "PASS"
 else
