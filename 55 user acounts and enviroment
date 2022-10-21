@@ -1,5 +1,16 @@
 #!/bin/bash
 
+DAK= grep PASS_MIN_DAYS /etc/login.defs | grep -v "#" | awk -F " " '{print $2}'
+
+echo -ne "control: 5.5.1.1 Ensure minimum days between password changes is 1: "
+
+if [[$DAK = 1 ]]
+then
+	echo "PASS"
+else
+	echo "FAILED"
+fi
+
 AGE=`grep PASS_MAX_DAYS /etc/login.defs | grep -v "#" | awk -F " " '{print $2}'`
 
 echo -ne "Control: 5.5.1.2 Ensure password expiration is 365 days or less: "
